@@ -3,6 +3,7 @@ package BS2_Inyeccioón_de_dependencias;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+//Creamos un opjeto persona , con sus getters y setters
 @Data
 public class Persona {
     String nombre;
