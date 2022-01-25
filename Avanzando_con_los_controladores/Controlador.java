@@ -1,4 +1,4 @@
-package RS1.Avanzando_con_los_controladores;
+package RS1_Avanzando_con_los_controladores;
 
 
 
@@ -12,18 +12,18 @@ import java.util.List;
 @RestController
 public class Controlador {
     @Autowired
-    com.example.demo1.UsuarioRepositorio usuarioRepositorio;
+    UsuarioRepositorio usuarioRepositorio;
 
     @GetMapping
-    public List<com.example.demo1.Usuarios> getAll(){
+    public List<Usuarios> getAll(){
         return usuarioRepositorio.findAll();
     }
     @GetMapping("{id}")
-    public com.example.demo1.Usuarios getByID(@PathVariable Integer id) throws Exception{
+    public Usuarios getByID(@PathVariable Integer id) throws Exception{
         return usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("No encontrado"));
     }
     @PostMapping
-    public com.example.demo1.Usuarios anadirUsuario(@RequestBody com.example.demo1.Usuarios usu){
+    public Usuarios anadirUsuario(@RequestBody Usuarios usu){
         System.out.println("Estas añadiendo");
         usuarioRepositorio.save(usu);
         return usu;
@@ -34,9 +34,9 @@ public class Controlador {
         usuarioRepositorio.deleteById(id);
     }
     @PutMapping("{idUsuario}")
-    public com.example.demo1.Usuarios modificarUsuario(@PathVariable Integer idUsuario, @RequestBody com.example.demo1.UsuarioInputDto usu) throws Exception{
+    public Usuarios modificarUsuario(@PathVariable Integer idUsuario, @RequestBody UsuarioInputDto usu) throws Exception{
         System.out.println("Estas modificando");
-        com.example.demo1.Usuarios usuFind=usuarioRepositorio.findById(idUsuario).orElseThrow(()-> new Exception("Id: "+idUsuario+" No encontrado"));
+        Usuarios usuFind=usuarioRepositorio.findById(idUsuario).orElseThrow(()-> new Exception("Id: "+idUsuario+" No encontrado"));
         if (usu.getCiudad()!=null)
             usuFind.setCiudad(usu.getCiudad());
         if (usu.getNombreUsuario()!=null)
@@ -47,6 +47,7 @@ public class Controlador {
         return usuFind;
     }
 }
+
 
 
 
