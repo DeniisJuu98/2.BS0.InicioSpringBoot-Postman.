@@ -1,4 +1,5 @@
-package RS1.Avanzando_con_los_controladores;
+package RS1_Avanzando_con_los_controladores;
+
 
 import lombok.Data;
 @Data
